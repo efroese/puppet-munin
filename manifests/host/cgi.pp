@@ -13,4 +13,11 @@ class munin::host::cgi {
                     "puppet:///modules/munin/config/host/logrotate" ],
         owner => root, group => 0, mode => 0644;
     }
+
+    file { '/etc/httpd/conf.d/munin.conf':
+        source => 'puppet:///modules/munin/apache-munin.conf',
+        owner => root,
+        group => root,
+        mode => 0644
+    }
 }
