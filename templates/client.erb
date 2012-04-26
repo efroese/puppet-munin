@@ -12,8 +12,8 @@
 # Description: <%= description.gsub!(/\n/, ' ') %>
 <% end -%>
 [<%= fhost.downcase %>]
-    address <%= scope.lookupvar('munin::client::host') %>
-    port <%= scope.lookupvar('munin::client::port') %>
+    address <%= munin_host_real %>
+    port <%= munin_port_real %>
 <% if config -%><% config.each do |val| -%> 
     <%= val -%>
 <% end -%><% end -%>

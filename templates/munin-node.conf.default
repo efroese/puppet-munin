@@ -51,9 +51,9 @@ allow <%= "^#{Regexp.escape(allow)}$" %>
 # cidr_deny  192.0.2.42/32
 
 # Which address to bind to;
-host <%= scope.lookupvar('munin::munin_host') %>
+host <%= scope.lookupvar('munin::client::host') %>
 # host 127.0.0.1
 
 # And which port
-port <%= scope.lookupvar('munin::munin_port') %>
+port <%= scope.lookupvar('munin::client::port') %>
 
