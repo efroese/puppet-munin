@@ -36,7 +36,7 @@ graph_strategy cgi
 
 # If the automatic CGI url is wrong for your system override it here:
 #
-#cgiurl_graph /cgi-bin/munin-cgi-graph
+cgiurl_graph /cgi-bin/munin-fastcgi-graph
 
 # munin-graph runs in parallel, the number of concurrent processes is
 # 6.  If you want munin-graph to not be parallel set to 0.  If set too
