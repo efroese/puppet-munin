@@ -1,6 +1,6 @@
 define munin::register (
   $host = 'absent',
-  $port = 'absent',
+  $port = '4949',
   $description = 'absent',
   $config = []
 )
