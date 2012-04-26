@@ -1,6 +1,4 @@
-class munin::client::base(
-  $munin_allow = hiera('munin_allow','127.0.0.1')
-) {
+class munin::client::base {
     service { 'munin-node':
         ensure => running,
         enable => true,

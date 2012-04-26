@@ -8,18 +8,10 @@ define munin::register (
     $fhost = $name
     $client_type = 'client'
 
-    $munin_port_real = $port ? {
-        'absent' => hiera('munin_port','4949'),
-        default => $port
-    }
+    $munin_port_real = $port
 
-    $hiera_munin_host = hiera('munin_host','')
     $munin_host_real = $host ? {
-        'absent' =>  $hiera_munin_host ? {
-                        '' => $::fqdn,
-                        'fqdn' => $::fqdn,
-                        default => $hiera_munin_host
-                    },
+        'absent' => $::fqdn,
         default => $host
     }
 

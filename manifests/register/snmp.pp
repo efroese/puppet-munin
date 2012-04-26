@@ -9,10 +9,7 @@ define munin::register::snmp (
     $client_type = 'snmp'
     $config = [ 'use_node_name no' ]
 
-    $munin_port_real = $port ? {
-      'absent' => hiera('munin_port','4949'),
-      default => $port
-    }
+    $munin_port_real = $port
 
     exec { "munin_register_snmp_${fhost}":
         command => "munin-node-configure --snmp ${fhost} --snmpcommunity ${community} --shell | sh",
