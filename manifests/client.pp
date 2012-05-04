@@ -19,4 +19,6 @@ class munin::client (
     if $use_shorewall {
         include shorewall::rules::munin
     }
+
+    include munin::client::base
 }
