@@ -18,6 +18,6 @@ define munin::register (
     @@concat::fragment{ "munin_client_${fhost}_${munin_port_real}":
         target => '/etc/munin/munin.conf',
         content => template("munin/client.erb"),
-        tag => 'munin',
+        tag => "munin_host_${munin::client::graphing_server}",
     }
 }

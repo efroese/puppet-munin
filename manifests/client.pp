@@ -6,7 +6,8 @@
 class munin::client (
     $munin_allow = ['127.0.0.1'],
     $host = 'absent',
-    $port = '4949') {
+    $port = '4949',
+    $graphing_server) {
 
     case $::operatingsystem {
         openbsd: { include munin::client::openbsd }
