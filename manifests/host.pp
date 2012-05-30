@@ -2,11 +2,13 @@
 # Copyright (C) 2007 David Schmitt <david@schmitt.edv-bus.at>
 # See LICENSE for the full license granted to you.
 
-class munin::host {
-  package {"munin": ensure => installed, }
+class munin::host ($munin_tag = $::fqdn){
+
+  package { 'munin': ensure => installed, }
+
   include concat::setup
 
-  Concat::Fragment <<| tag == 'munin' |>>
+  Concat::Fragment <<| tag == "munin_host_${munin_tag}" |>>
 
   concat::fragment{'munin.conf.header':
     target => '/etc/munin/munin.conf',
@@ -20,8 +22,10 @@ class munin::host {
     order => 05,
   }
 
-  concat{ "/etc/munin/munin.conf":
-    owner => root, group => 0, mode => 0644;
+  concat { '/etc/munin/munin.conf':
+    owner => root,
+    group => 0,
+    mode => 0644,
   }
 
   include munin::plugins::muninhost
