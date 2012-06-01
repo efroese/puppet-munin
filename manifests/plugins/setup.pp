@@ -7,16 +7,4 @@ class munin::plugins::setup {
       mode => 0755, owner => root, group => 0,
       notify => Service['munin-node'];
   }
-  case $::kernel {
-    openbsd: {
-      File['/etc/munin/plugin-conf.d/munin-node']{
-        before => File['/var/run/munin'],
-      }
-    }
-    default: {
-      File['/etc/munin/plugin-conf.d/munin-node']{
-        before => Package['munin-node'],
-      }
-    }
-  }
 }
