@@ -6,10 +6,6 @@ class munin::plugins::setup {
       recurse => true, purge => true, force => true,
       mode => 0755, owner => root, group => 0,
       notify => Service['munin-node'];
-    '/etc/munin/plugin-conf.d/munin-node':
-      ensure => present,
-      mode => 0644, owner => root, group => 0,
-      notify => Service['munin-node'],
   }
   case $::kernel {
     openbsd: {
